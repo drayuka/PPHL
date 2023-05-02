@@ -1,7 +1,11 @@
+version: '3'
+
 services:
   asterisk:
     build: ./asterisk
     volumes: 
       - ./recorded_audio:/usr/asterisk/recorded_audio
     ports:
-      - 5060:5060
+      - "5060:5060/tcp"
+      - "5060:5060/udp"
+
