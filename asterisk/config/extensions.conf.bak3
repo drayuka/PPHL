@@ -1,13 +1,13 @@
 [from-internal]
 exten => 2222222,1,Goto(demo-menu,s,1)
+exten => 6001,1,Dial(PJSIP/6001,30)
+exten => 6002,1,Dial(PJSIP/6002,30)
 
 [demo-menu]
-exten => s,1,Answer(500)
-   same => n(loop),Background(hello-world)
-   same => n,Verbose(2,got to A)
-   same => n,WaitExten(20)
-   same => n,Read(NUMBER,,2)
-   same => n,SayNumber(${NUMBER})
+;exten => n(loop),Read(UserInput,hello-world,1,,,20)
+exten => n(loop),Read(UserInput)
+   same => n,Verbose(AAA)
+   same => n,SayDigits(${UserInput})
    same => n,Goto(s,loop)
  
 exten => 1,1,Playback(vm-msgsaved)
