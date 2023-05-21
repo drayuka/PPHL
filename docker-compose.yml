@@ -8,6 +8,8 @@ services:
     ports:
       - "5060:5060/tcp"
       - "5060:5060/udp"
+      - "5061:5061/tcp"
+      - "5061:5061/udp"
       - "10000:10000/tcp"
       - "10000:10000/udp"
       - "10001:10001/udp"
@@ -18,3 +20,14 @@ services:
       - "10003:10003/tcp"
       - "10004:10004/udp"
       - "10004:10004/tcp"
+    networks:
+      network:
+        ipv4_address: 172.33.0.5
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.33.0.0/16
+          gateway: 172.33.0.1
